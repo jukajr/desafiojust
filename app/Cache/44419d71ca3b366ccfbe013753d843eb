@@ -1,0 +1,40 @@
+<?php $__env->startSection('conteudo'); ?>
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">Categoria</h3>
+  </div>
+  <div class="box-body">
+  	<?php echo $__env->make('includes.mensagem', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php if(count($categorias)): ?>
+		<table>
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>NOME</th>
+					<th  style="width:150px;">OPÇÕES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($categorias as $categoria): ?>
+					<tr>
+						<td><?php echo $categoria->nome; ?></td>
+						<td>
+							<a class="btn btn-default btn-xs" href="/controle/categoria/form/<?php echo $categoria->id; ?>" data-toggle="tooltip" data-original-title="Editar" name="Editar"><i class="fa fa-edit"></i></a>
+							<a class="btn btn-danger btn-xs atencao" href="#" data-href="/controle/categoria/delete/<?php echo $categoria->id; ?>" data-toggle="tooltip" data-original-title="Excluir" name="Excluir" ><i class="fa fa-trash"></i></a>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+			</table>
+		</table>
+    <?php else: ?>
+		Não foram encontrados registros.
+    <?php endif; ?>
+  </div>
+  <div class="box-footer">
+    <a href="/controle/categoria/form" class="btn btn-success pull-right">NOVO</a>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.controle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

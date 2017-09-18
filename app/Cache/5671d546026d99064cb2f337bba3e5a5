@@ -1,0 +1,10 @@
+<?php if (isset($_SESSION['msg'])): ?>
+<div class="alert alert-<?php echo $_SESSION['error'] ? 'danger' : 'success'; ?> alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  <h4><i class="icon fa fa-<?php echo ($_SESSION['error']) ? 'ban' : 'check'; ?>"></i> <?php echo ($_SESSION['error']) ? 'Erro' : 'Sucesso'; ?>!</h4>
+  <?php echo $_SESSION['msg']; ?>
+</div>
+<?php endif; ?>
+<?php
+unset($_SESSION['msg'])
+?>

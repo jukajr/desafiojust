@@ -1,0 +1,48 @@
+<?php $__env->startSection('conteudo'); ?>
+<div class="row">
+	<div class="span8">
+		<ul class="unstyled post-list">
+
+
+			<li>
+				<article class="post">
+					<?php if(!empty($post->imagem)): ?>
+					<div class="item-pic">
+						<a href="/post/<?php echo $post->slug; ?>">
+							<img src="/data/post/<?php echo $post->imagem; ?>">
+
+						</a>
+					</div>
+					<?php endif; ?>
+					<ul class="unstyled inline post-meta">
+						<li><?php echo $post->created_at; ?></li>
+						<li>/</li>
+						<li><?php echo $post->categoria; ?></li>
+					</ul>
+
+					<div class="clearfix"></div>
+					<h4><a href="/post/<?php echo $post->slug; ?>"><?php echo $post->titulo; ?></a></h4>
+					<?php echo $post->texto; ?>
+				</article><!--/.post -->
+			</li>
+
+		</ul>
+	</div>
+	<div class="span4 sidebar">
+		<div class="widget well">
+			<h4 class="section-header"><span>//</span>Filtro Categorias</h4>
+			<ul class="recent-posts">
+				<?php foreach($categorias as $categoria): ?>
+				<li>
+					<a href="/?categoria=<?php echo $categoria->id; ?>">
+						<span class="post-title"><?php echo $categoria->nome; ?></span>
+					</a>
+				</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div><!--/.sidebar -->
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.site', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
